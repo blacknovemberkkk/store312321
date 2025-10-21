@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melissa Kirk + Alexandre Pavão - Loja Oficial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="produto.css">
+</head>
+<body>
+
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="header-top">
+            <img src="img/logo.png" alt="Melissa" class="logo">
+            <div class="search-cart-container">
+                <div class="search-container">
+                    <img src="img/lupa.svg" alt="Buscar" class="search-icon">
+                    <input type="text" placeholder="Buscar" class="search-input">
+                </div>
+                <div class="cart-container">
+                    <img src="img/carrinho.svg" alt="Carrinho" class="cart-icon">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu de Navegação -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">INÍCIO</a></li>
+                <li><a href="#">NOVIDADES</a></li>
+                <li><a href="#">BOLSAS</a></li>
+                <li><a href="#">ACESSÓRIOS</a></li>
+                <li><a href="#">MELISSA + DIESEL</a></li>
+                <li><a href="#">EM ALTA</a></li>
+                <li><a href="#">INFANTIL</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="product-main">
+        <div class="container">
+            <!-- Seção do Produto -->
+            <section class="product-section">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img src="img/26.webp" alt="Melissa Kirk + Alexandre Pavão" class="main-image" id="mainImage">
+                        <button class="gallery-btn prev-btn" onclick="changeImage(-1)">❮</button>
+                        <button class="gallery-btn next-btn" onclick="changeImage(1)">❯</button>
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <img src="img/26.webp" alt="Azul" class="thumbnail active" onclick="setMainImage('img/26.webp')">
+                        <img src="img/Melissa Kirk + Alexandre Pavão/rosa.jpeg" alt="Rosa" class="thumbnail" onclick="setMainImage('img/Melissa Kirk + Alexandre Pavão/rosa.jpeg')">
+                        <img src="img/Melissa Kirk + Alexandre Pavão/preto.jpeg" alt="Preto" class="thumbnail" onclick="setMainImage('img/Melissa Kirk + Alexandre Pavão/preto.jpeg')">
+                        <img src="img/Melissa Kirk + Alexandre Pavão/laranja.jpeg" alt="Laranja" class="thumbnail" onclick="setMainImage('img/Melissa Kirk + Alexandre Pavão/laranja.jpeg')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="product-badges">
+                        <span class="sales-badge">432.786 Unidades vendidas</span>
+                        <span class="exclusive-badge">Exclusivo</span>
+                    </div>
+
+                    <h1 class="product-title">Melissa Kirk + Alexandre Pavão</h1>
+                    <p class="product-price">R$ 9,99</p>
+                    <p class="original-price">R$ 319,90</p>
+
+                    <div class="payment-methods">
+                        <img src="img/mastercard.svg" alt="Mastercard" class="payment-icon">
+                        <img src="img/pix.svg" alt="Pix" class="payment-icon">
+                        <img src="img/hipercard.svg" alt="Hipercard" class="payment-icon">
+                        <img src="img/amex.svg" alt="American Express" class="payment-icon">
+                        <img src="img/visa.svg" alt="Visa" class="payment-icon">
+                    </div>
+
+                    <div class="color-selection">
+                        <h3>Cor</h3>
+                        <div class="color-options">
+                            <button class="color-btn active" data-color="azul" onclick="selectColor('azul')">Azul</button>
+                            <button class="color-btn" data-color="rosa" onclick="selectColor('rosa')">Rosa</button>
+                            <button class="color-btn" data-color="preto" onclick="selectColor('preto')">Preto</button>
+                            <button class="color-btn" data-color="laranja" onclick="selectColor('laranja')">Laranja</button>
+                        </div>
+                    </div>
+
+                    <div class="size-selection">
+                        <h3>Tamanho</h3>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="33/34" onclick="selectSize('33/34')">33/34</button>
+                            <button class="size-btn" data-size="35" onclick="selectSize('35')">35</button>
+                            <button class="size-btn" data-size="36" onclick="selectSize('36')">36</button>
+                            <button class="size-btn" data-size="37" onclick="selectSize('37')">37</button>
+                            <button class="size-btn" data-size="38" onclick="selectSize('38')">38</button>
+                            <button class="size-btn" data-size="39" onclick="selectSize('39')">39</button>
+                            <button class="size-btn" data-size="40/41" onclick="selectSize('40/41')">40/41</button>
+                            <button class="size-btn" data-size="42" onclick="selectSize('42')">42</button>
+                            <button class="size-btn" data-size="43/44" onclick="selectSize('43/44')">43/44</button>
+                        </div>
+                    </div>
+
+
+                    <div class="action-buttons">
+                        <button class="buy-btn" onclick="buyNow()">Comprar</button>
+                        <button class="cart-btn" onclick="addProductToCart()">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Descrição do Produto -->
+            <section class="product-description">
+                <h2>MELISSA KIRK + ALEXANDRE PAVÃO: ESTILO COM ASSINATURA</h2>
+                <p>A Melissa Kirk + Alexandre Pavão traduz o encontro entre irreverência e identidade marcante em uma sandália que se destaca nos mínimos detalhes. Inspirada no universo utilitário, a peça incorpora cordas e mosquetões, elementos emblemáticos do trabalho de Pavão, em um design que une impacto visual e sofisticação. A amarração em corda têxtil acrescenta uma camada extra de personalidade ao visual, enquanto a paleta de cores vibrante reforça o caráter expressivo da criação. Pensada para quem valoriza autenticidade e presença sem abrir mão da versatilidade, essa colaboração reafirma o potencial criativo de duas potências do design.</p>
+            </section>
+
+            <!-- Produtos Relacionados -->
+            <section class="related-products">
+                <h2>Você também pode gostar ❤️</h2>
+                <div class="related-grid">
+                    <a href="produto-melissa-possession.html" class="related-product">
+                        <img src="img/21.webp" alt="Melissa Possession">
+                        <h3>Melissa Possession</h3>
+                        <p class="price">R$ 169,90</p>
+                    </a>
+                    <a href="produto-melissa-coturno-steal-look.html" class="related-product">
+                        <div class="discount-badge">30% OFF</div>
+                        <img src="img/22.webp" alt="Melissa Coturno + Steal The Look">
+                        <h3>Melissa Coturno + Steal The Look</h3>
+                        <p class="original-price">R$ 459,90</p>
+                        <p class="sale-price">R$ 321,90</p>
+                    </a>
+                    <a href="produto-melissa-lina.html" class="related-product">
+                        <div class="discount-badge">30% OFF</div>
+                        <img src="img/23.webp" alt="Melissa Lina">
+                        <h3>Melissa Lina</h3>
+                        <p class="original-price">R$ 349,90</p>
+                        <p class="sale-price">R$ 244,90</p>
+                    </a>
+                    <a href="produto-melissa-texas-mule.html" class="related-product">
+                        <div class="discount-badge">40% OFF</div>
+                        <img src="img/24.webp" alt="Melissa Texas Mule">
+                        <h3>Melissa Texas Mule</h3>
+                        <p class="original-price">R$ 399,90</p>
+                        <p class="sale-price">R$ 239,90</p>
+                    </a>
+                    <a href="produto-quantum-platform.html" class="related-product">
+                        <img src="img/1.webp" alt="Melissa Quantum Platform + Diesel">
+                        <h3>Melissa Quantum Platform + Diesel</h3>
+                        <p class="price">R$ 499,90</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Horário de Atendimento</h4>
+                    <p>Segunda à Sexta, 9h - 18h</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Suporte</h4>
+                    <p>contato@usamelissa.com</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Formas de Pagamento</h4>
+                    <div class="payment-methods">
+                        <img src="img/mastercard.svg" alt="Mastercard" class="payment-icon">
+                        <img src="img/pix.svg" alt="Pix" class="payment-icon">
+                        <img src="img/hipercard.svg" alt="Hipercard" class="payment-icon">
+                        <img src="img/amex.svg" alt="American Express" class="payment-icon">
+                        <img src="img/visa.svg" alt="Visa" class="payment-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="security-logos">
+                    <img src="img/reclameaqui.webp" alt="Reclame Aqui" class="security-icon">
+                    <img src="img/ssl.webp" alt="SSL Seguro" class="security-icon">
+                    <img src="img/google.webp" alt="Google Site Seguro" class="security-icon">
+                </div>
+                <p class="copyright">
+                    © 2025 Melissa - Loja Oficial | Todos os direitos reservados. CNPJ: 89.850.341/0001-60 | E-mail: contato@usamelissa.com Política de Privacidade | Termos de Uso
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sidebar do Carrinho -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2 id="cartTitle">Carrinho (0 itens)</h2>
+            <button class="close-cart" onclick="closeCart()">×</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+        </div>
+        
+        <div class="cart-summary">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">R$ 0,00</span>
+            </div>
+            <div class="total">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+        </div>
+        
+        <div class="cart-actions">
+            <button class="checkout-btn" onclick="checkout()">Finalizar compra</button>
+            <button class="continue-shopping-btn" onclick="closeCart()">Continuar comprando</button>
+        </div>
+    </div>
+
+    <!-- Overlay para fechar o carrinho -->
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script src="produto.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Confirmado - Melissa</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            max-width: 600px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .success-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .success-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #333;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #555;
+        }
+        
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .success-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="header-top">
+            <img src="img/logo.png" alt="Melissa" class="logo">
+            <div class="search-cart-container">
+                <div class="search-container">
+                    <img src="img/lupa.svg" alt="Buscar" class="search-icon">
+                    <input type="text" placeholder="Buscar" class="search-input">
+                </div>
+                <div class="cart-container">
+                    <img src="img/carrinho.svg" alt="Carrinho" class="cart-icon">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main style="background: #f8f9fa; min-height: calc(100vh - 200px); padding: 40px 0;">
+        <div class="success-container">
+            <div class="success-icon">✅</div>
+            <h1 class="success-title">Pagamento Confirmado!</h1>
+            <p class="success-message">
+                Seu pedido foi processado com sucesso!<br>
+                Você receberá um e-mail de confirmação em breve com todos os detalhes da sua compra.
+            </p>
+            
+            <div class="success-actions">
+                <a href="index.html" class="btn btn-primary">Continuar Comprando</a>
+                <a href="#" class="btn btn-secondary">Acompanhar Pedido</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Sobre a Melissa</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Políticas</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="payment-methods">
+                <img src="img/visa.svg" alt="Visa" class="payment-icon">
+                <img src="img/mastercard.svg" alt="Mastercard" class="payment-icon">
+                <img src="img/pix.svg" alt="Pix" class="payment-icon">
+                <img src="img/hipercard.svg" alt="Hipercard" class="payment-icon">
+                <img src="img/amex.svg" alt="American Express" class="payment-icon">
+            </div>
+            <div class="security-logos">
+                <img src="img/reclameaqui.webp" alt="Reclame Aqui" class="security-icon">
+                <img src="img/ssl.webp" alt="SSL Seguro" class="security-icon">
+                <img src="img/google.webp" alt="Google Site Seguro" class="security-icon">
+            </div>
+            <p class="copyright">
+                © 2025 Melissa - Loja Oficial | Todos os direitos reservados. CNPJ: 89.850.341/0001-60 | E-mail: contato@usamelissa.com Política de Privacidade | Termos de Uso
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
