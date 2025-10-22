@@ -154,6 +154,50 @@ app.get("/test", (req, res) => {
   res.json({ message: "API PIX funcionando!" });
 });
 
+// Função placeholder para atualizar o status do pedido no banco de dados
+async function updateOrderStatus(orderId, status) {
+  console.log(`--- ATUALIZANDO STATUS DO PEDIDO (placeholder) ---`);
+  console.log(`ID do Pedido: ${orderId}`);
+  console.log(`Novo Status: ${status}`);
+  // Aqui você implementaria a lógica para encontrar o pedido no seu
+  // banco de dados e atualizar o status dele.
+  // Exemplo: await OrderModel.updateOne({ _id: orderId }, { status: status });
+  console.log(`------------------------------------------------`);
+  return Promise.resolve();
+}
+
+// Rota para receber webhooks de status de pagamento
+app.post('/webhook', async (req, res) => {
+  try {
+    // Validar autenticação do webhook
+    const token = req.headers.authorization?.replace('Bearer ', '');
+    const webhookApiKey = process.env.WEBHOOK_API_KEY || 'SUA_API_KEY_AQUI';
+
+    if (token !== webhookApiKey) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    // Processar dados do webhook
+    const { orderId, orderNumber, amount, status } = req.body;
+    
+    console.log('Webhook recebido:', {
+      orderId,
+      orderNumber,
+      amount,
+      status
+    });
+
+    // Atualizar o status do pedido no banco de dados
+    await updateOrderStatus(orderId, status);
+
+    // Confirmar recebimento para a plataforma de pagamento
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Erro ao processar webhook:', error);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

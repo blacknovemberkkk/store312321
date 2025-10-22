@@ -301,7 +301,7 @@ async function finalizePayment() {
   // Validar se todos os dados estão preenchidos
   if (
     !checkoutData.customer ||
-    !checkoutData.customer.nomeCompleto ||
+    !checkoutData.customer.fullName ||
     !checkoutData.customer.cpf
   ) {
     alert("Por favor, preencha todos os dados de identificação.");
@@ -325,8 +325,15 @@ async function finalizePayment() {
   finalizeBtn.disabled = true;
 
   try {
-    // Calcular valor total
+    // Calcular valor total e nome do produto
     const cartItems = JSON.parse(localStorage.getItem("melissaCart")) || [];
+    if (cartItems.length === 0) {
+      alert("Seu carrinho está vazio.");
+      finalizeBtn.innerHTML = originalText;
+      finalizeBtn.disabled = false;
+      return;
+    }
+
     let productsTotal = 0;
     cartItems.forEach((item) => {
       const price = parseFloat(item.price.replace("R$ ", "").replace(",", "."));
@@ -336,33 +343,61 @@ async function finalizePayment() {
     const shippingPrice = checkoutData.delivery.price || 0;
     const totalValue = productsTotal + shippingPrice;
 
-    // Preparar dados para a API
-    const paymentData = {
-      nomeCompleto: checkoutData.customer.nomeCompleto,
-      cpf: checkoutData.customer.cpf,
-      email: checkoutData.customer.email,
-      telefone: checkoutData.customer.telefone,
-      valorTotal: totalValue,
-      endereco: checkoutData.address,
-      metodoEntrega: checkoutData.delivery.method,
+    const productNames = cartItems
+      .map((item) => `${item.name} (x${item.quantity})`)
+      .join(", ");
+
+    // Preparar dados para a API /api/user/direct-checkout
+    const [city, uf] = checkoutData.address.cityState.split(" - ");
+
+    const payload = {
+      productName: productNames,
+      productAmount: totalValue,
+      customerName: checkoutData.customer.fullName,
+      customerEmail: checkoutData.customer.email,
+      customerCpf: checkoutData.customer.cpf,
+      customerPhone: checkoutData.customer.phone,
+      paymentMethod: checkoutData.payment.method.toUpperCase(),
+      address: {
+        cep: checkoutData.address.cep,
+        street: checkoutData.address.street,
+        number: checkoutData.address.number,
+        complement: checkoutData.address.complement,
+        neighborhood: checkoutData.address.neighborhood,
+        city: city,
+        uf: uf,
+      },
+      // cardData is not collected in this form
     };
 
-    // Chamar API PIX
-    const response = await fetch("http://localhost:3001/gerar-pix", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(paymentData),
-    });
+    // Chamar API de direct checkout
+    const response = await fetch(
+      "http://localhost:3001/api/user/direct-checkout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
 
     const result = await response.json();
 
-    if (response.ok && result.success !== false) {
-      // Sucesso - mostrar QR Code ou redirecionar
-      showPixPayment(result);
+    if (response.ok && result.success) {
+      // Sucesso - mostrar QR Code
+      const pixDisplayData = {
+        valor: totalValue,
+        cliente: { nome: checkoutData.customer.fullName },
+        qrcode: result.data.pix.image, // base64 image for src
+        pix: result.data.pix.qr_code, // code to copy
+        id: result.data.orderId, // for checkPaymentStatus
+      };
+      showPixPayment(pixDisplayData);
     } else {
-      throw new Error(result.error || "Erro ao processar pagamento");
+      throw new Error(
+        result.error || result.message || "Erro ao processar pagamento"
+      );
     }
   } catch (error) {
     console.error("Erro no pagamento:", error);
